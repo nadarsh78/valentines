@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  margin:0;
+  background:linear-gradient(180deg,#ff758c,#ff7eb3);
+  color:white;
+  overflow-x:hidden;
+}
+
+.container{
+  padding:20px;
+  text-align:center;
+}
+
+h1{
+  font-size:2.4rem;
+  margin-top:20px;
+}
+
+p{
+  font-size:1.1rem;
+  line-height:1.6;
+}
+
+.section{
+  background:rgba(255,255,255,0.15);
+  border-radius:20px;
+  padding:20px;
+  margin:20px 0;
+  backdrop-filter:blur(10px);
+}
+
+button{
+  width:100%;
+  padding:14px;
+  font-size:1.1rem;
+  border:none;
+  border-radius:30px;
+  margin-top:10px;
+  background:#fff;
+  color:#ff4d6d;
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(0.97);
+}
+
+.card{
+  display:none;
+  background:white;
+  color:#ff4d6d;
+  padding:18px;
+  border-radius:16px;
+  margin-top:15px;
+}
+
+.love-list{
+  display:flex;
+  overflow-x:auto;
+  gap:12px;
+}
+
+.love-item{
+  min-width:200px;
+  background:white;
+  color:#ff4d6d;
+  padding:15px;
+  border-radius:16px;
+  flex-shrink:0;
+}
+
+.yes{
+  background:#ff4d6d;
+  color:white;
+}
+
+.no{
+  background:white;
+  color:#ff4d6d;
+  margin-top:10px;
+}
+
+.heart{
+  position:fixed;
+  bottom:-10px;
+  animation:float 6s linear infinite;
+  font-size:18px;
+}
+
+@keyframes float{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-120vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Happy Valentine’s Day ❤️</h1>
+
+<div class="section">
+<p id="typing"></p>
+</div>
+
+<div class="section">
+<h2>💌 A Little Love Note</h2>
+<p>
+Every moment with you feels special.  
+Your smile, your voice, your presence —  
+they make my world brighter every day.  
+I’m so lucky to have you. 💖
+</p>
+</div>
+
+<div class="section">
+<h2>✨ Things I Love About You</h2>
+<div class="love-list">
+  <div class="love-item">Your beautiful smile 😊</div>
+  <div class="love-item">The way you care 💕</div>
+  <div class="love-item">Your laugh 😍</div>
+  <div class="love-item">Your kindness 🌸</div>
+</div>
+</div>
+
+<div class="section">
+<h2>🎁 Tap for a Surprise</h2>
+<button onclick="showSurprise()">Open 💝</button>
+<div class="card" id="card"></div>
+</div>
+
+<div class="section">
+<h2>Will you be my Valentine? 💘</h2>
+<button class="yes" onclick="yes()">YES 😍</button>
+<button class="no" onclick="no()">No 😜</button>
+</div>
+
+</div>
+
+<script>
+/* typing text */
+const text="You are not just my Valentine today — you are my favorite person every day. ❤️";
+let i=0;
+function type(){
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(type,45);
+  }
+}
+type();
+
+/* surprises */
+const surprises=[
+"🌹 You make my heart feel at home",
+"💌 I fall for you every single day",
+"✨ You are my favorite thought",
+"🥰 I choose you. Always."
+];
+
+function showSurprise(){
+  const card=document.getElementById("card");
+  card.innerText=surprises[Math.floor(Math.random()*surprises.length)];
+  card.style.display="block";
+}
+
+/* buttons */
+function yes(){
+  alert("YAY ❤️ I’m the happiest person right now!");
+}
+
+function no(){
+  alert("Too bad 😜 I already chose you!");
+}
+
+/* floating hearts */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.style.left=Math.random()*100+"vw";
+  heart.innerHTML="❤️";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>
